@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">CAD assembly placeholder</title>
+  <desc id="desc">A technical isometric mechanical assembly drawing in blue and warm grey.</desc>
+  <rect width="1200" height="675" fill="#f1eeea"/>
+  <g stroke="#ded9d4" stroke-width="1" opacity=".8">
+    <path d="M0 75h1200M0 150h1200M0 225h1200M0 300h1200M0 375h1200M0 450h1200M0 525h1200M0 600h1200"/>
+    <path d="M75 0v675M150 0v675M225 0v675M300 0v675M375 0v675M450 0v675M525 0v675M600 0v675M675 0v675M750 0v675M825 0v675M900 0v675M975 0v675M1050 0v675M1125 0v675"/>
+  </g>
+  <g fill="none" stroke-linejoin="round">
+    <path d="m340 365 239-138 283 163-239 138z" fill="#fff" stroke="#1a1714" stroke-width="4"/>
+    <path d="m340 365v90l283 164v-91M623 528l239-138v91L623 619" fill="#e6e2dd" stroke="#1a1714" stroke-width="4"/>
+    <path d="m454 365 136-78 158 91-136 79z" fill="#eef1fc" stroke="#2d5be3" stroke-width="5"/>
+    <path d="m454 365v46l158 92v-46M612 457l136-79v46l-136 79" fill="#dfe6fb" stroke="#2d5be3" stroke-width="5"/>
+    <ellipse cx="598" cy="339" rx="73" ry="42" fill="#fff" stroke="#1a1714" stroke-width="4"/>
+    <path d="M525 339v61c0 23 33 42 73 42s73-19 73-42v-61" fill="#e6e2dd" stroke="#1a1714" stroke-width="4"/>
+    <ellipse cx="598" cy="339" rx="29" ry="17" fill="#f1eeea" stroke="#2d5be3" stroke-width="4"/>
+    <path d="m340 365 283 163M862 390 623 528M579 227v-58M862 390l68-39M340 365l-68-39" stroke="#9c9490" stroke-width="2" stroke-dasharray="8 9"/>
+  </g>
+  <g fill="#2d5be3" font-family="monospace">
+    <text x="74" y="92" font-size="22">MECHANICAL ASSEMBLY</text>
+    <text x="74" y="122" font-size="14" opacity=".65">PROJECT RENDER / EXPLODED VIEW</text>
+    <text x="991" y="591" font-size="15">MM–CAD</text>
+  </g>
+  <g fill="#9c9490" font-family="monospace" font-size="13">
+    <text x="940" y="617">REV 01</text>
+    <text x="940" y="640">SCALE 1:4</text>
+  </g>
+</svg>

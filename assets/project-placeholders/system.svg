@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Engineering system placeholder</title>
+  <desc id="desc">An abstract interconnected mechatronic system diagram.</desc>
+  <rect width="1200" height="675" fill="#f1eeea"/>
+  <circle cx="600" cy="337" r="235" fill="none" stroke="#ded9d4" stroke-width="2" stroke-dasharray="8 11"/>
+  <circle cx="600" cy="337" r="156" fill="none" stroke="#ded9d4" stroke-width="2"/>
+  <g fill="none" stroke="#1a1714" stroke-width="4">
+    <path d="M600 337 359 220M600 337l238-121M600 337 847 458M600 337 363 466"/>
+  </g>
+  <g fill="#fff" stroke="#2d5be3" stroke-width="5">
+    <circle cx="600" cy="337" r="85"/>
+    <rect x="290" y="165" width="138" height="108" rx="8"/>
+    <rect x="772" y="161" width="138" height="108" rx="8"/>
+    <rect x="781" y="407" width="138" height="108" rx="8"/>
+    <rect x="294" y="414" width="138" height="108" rx="8"/>
+  </g>
+  <g fill="#2d5be3" font-family="monospace" text-anchor="middle">
+    <text x="600" y="330" font-size="19">PROJECT</text>
+    <text x="600" y="358" font-size="13" opacity=".65">SYSTEM</text>
+    <text x="359" y="215" font-size="14">MECHANICAL</text>
+    <text x="841" y="211" font-size="14">ELECTRICAL</text>
+    <text x="850" y="457" font-size="14">SOFTWARE</text>
+    <text x="363" y="464" font-size="14">VALIDATION</text>
+  </g>
+  <g fill="#2d5be3" font-family="monospace">
+    <text x="74" y="92" font-size="22">MECHATRONIC SYSTEM</text>
+    <text x="74" y="122" font-size="14" opacity=".65">DESIGN / BUILD / ITERATE</text>
+    <text x="1000" y="615" font-size="15">MM–SYS</text>
+  </g>
+</svg>

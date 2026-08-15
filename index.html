@@ -3,596 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ============================================================
-    PORTFOLIO TITLE — update the text inside <title> below
-  ============================================================ -->
+  <meta
+    name="description"
+    content="Mueez Mughal — Mechatronics Engineering student at UBC building mechanical, electrical, and embedded systems."
+  />
   <title>Mueez Mughal — Mechatronics Engineer</title>
+  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" sizes="any" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ============================================================
-       DESIGN TOKENS — tweak colors, fonts, spacing here
-    ============================================================ */
-    :root {
-      --bg:          #F7F5F2;
-      --surface:     #FFFFFF;
-      --border:      #E2DDD7;
-      --ink:         #1A1714;
-      --ink-mid:     #5C5650;
-      --ink-light:   #9C9490;
-      --accent:      #2D5BE3;   /* ← change this to swap the accent color */
-      --accent-warm: #D4500A;
-      --tag-bg:      #EEF1FC;
-      --tag-text:    #2D5BE3;
-
-      --font-display: 'DM Serif Display', Georgia, serif;
-      --font-body:    'DM Sans', sans-serif;
-      --font-mono:    'DM Mono', monospace;
-
-      --radius: 4px;
-      --max-w: 860px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Layout ─────────────────────────────────────────────── */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    section { padding: 80px 0; }
-    section + section { border-top: 1px solid var(--border); }
-
-    /* ── Nav ─────────────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(247, 245, 242, 0.88);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink-mid);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      transition: color 0.15s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── Hero ─────────────────────────────────────────────────── */
-    #hero {
-      padding: 100px 0 80px;
-      border-top: none;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    h1 {
-      font-family: var(--font-display);
-      font-size: clamp(42px, 7vw, 68px);
-      font-weight: 400;
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      margin-bottom: 28px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-bio {
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--ink-mid);
-      max-width: 540px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 22px;
-      border-radius: var(--radius);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: 1.5px solid var(--accent);
-    }
-    .btn-primary:hover { background: #1e45c4; border-color: #1e45c4; }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--ink-mid); }
-
-    /* ── Section headers ─────────────────────────────────────── */
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 4vw, 38px);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 48px;
-    }
-
-    /* ── Skills ──────────────────────────────────────────────── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px;
-    }
-
-    .skill-group h3 {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 4px 11px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 2px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--font-mono);
-    }
-
-    /* ── Experience ──────────────────────────────────────────── */
-    .experience-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 24px;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-      animation: fadeUp 0.4s ease both;
-    }
-
-    .exp-item:first-child { border-top: 1px solid var(--border); }
-
-    .exp-date {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--ink-light);
-      padding-top: 3px;
-      line-height: 1.5;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    /* Company logo sits below the date text */
-    .exp-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      object-fit: contain;
-      background: var(--surface);
-      padding: 5px;
-      display: block;
-    }
-
-    /* Dashed placeholder shown until you add a real logo */
-    .exp-logo-placeholder {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
-      border: 1.5px dashed var(--border);
-      background: var(--surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-
-    .exp-content h3 {
-      font-size: 17px;
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .exp-company {
-      font-size: 14px;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 10px;
-      font-family: var(--font-mono);
-    }
-
-    .exp-desc {
-      font-size: 15px;
-      color: var(--ink-mid);
-      font-weight: 300;
-    }
-
-    .exp-tags {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .exp-tags .tag {
-      background: #F0F0EE;
-      color: var(--ink-mid);
-      font-size: 11px;
-    }
-
-    /* ── Projects ────────────────────────────────────────────── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 24px;
-    }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
-      transform: translateY(-2px);
-    }
-
-    .project-card-img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: var(--bg);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-
-    .project-card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Placeholder pattern for cards without images */
-    .project-card-img.no-img {
-      background: repeating-linear-gradient(
-        45deg,
-        var(--bg),
-        var(--bg) 4px,
-        var(--border) 4px,
-        var(--border) 5px
-      );
-    }
-
-    .project-card-img .proj-icon {
-      font-size: 32px;
-      opacity: 0.35;
-    }
-
-    .project-card-body {
-      padding: 22px 24px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card-body h3 {
-      font-size: 17px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .project-card-body p {
-      font-size: 14px;
-      color: var(--ink-mid);
-      font-weight: 300;
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    .project-card-footer {
-      padding: 14px 24px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 12px;
-    }
-
-    .project-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      letter-spacing: 0.02em;
-    }
-    .project-links a:hover { text-decoration: underline; }
-
-    /* ── About ───────────────────────────────────────────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 16px;
-      color: var(--ink-mid);
-      font-weight: 300;
-      margin-bottom: 18px;
-      line-height: 1.75;
-    }
-
-    .about-text p strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .interests-list {
-      list-style: none;
-    }
-
-    .interests-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 15px;
-      color: var(--ink-mid);
-      font-weight: 300;
-    }
-
-    .interests-list li::before {
-      content: '↗';
-      font-family: var(--font-mono);
-      color: var(--accent);
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-
-    /* ── Footer ──────────────────────────────────────────────── */
-    footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--ink-light);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--ink-light);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ── Hero layout with photo ──────────────────────────────── */
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 56px;
-      align-items: center;
-    }
-
-    .hero-photo-wrap {
-      flex-shrink: 0;
-      animation: fadeUp 0.5s ease 0.35s both;
-    }
-
-    .hero-photo {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 3px solid var(--border);
-      display: block;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    }
-
-    .hero-photo-placeholder {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      border: 2px dashed var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--surface);
-      color: var(--ink-light);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-align: center;
-      line-height: 1.5;
-      padding: 20px;
-    }
-
-    @media (max-width: 640px) {
-      .hero-layout { grid-template-columns: 1fr; gap: 36px; }
-      .hero-photo-wrap { order: -1; }
-      .hero-photo, .hero-photo-placeholder { width: 140px; height: 140px; }
-    }
-
-    /* ── Animations ──────────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-eyebrow { animation: fadeUp 0.5s ease 0.1s both; }
-    h1            { animation: fadeUp 0.5s ease 0.2s both; }
-    .hero-bio     { animation: fadeUp 0.5s ease 0.3s both; }
-    .hero-actions { animation: fadeUp 0.5s ease 0.4s both; }
-
-    /* ── Responsive ──────────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .nav-links { gap: 18px; }
-      .exp-item  { grid-template-columns: 1fr; gap: 6px; }
-      .exp-date  { font-size: 11px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .projects-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
+
+  <!-- Used only when a 3D model is opened. The rest of the site works without it. -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./assets/vendor/three/three.module.js",
+        "three/addons/": "./assets/vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="assets/js/portfolio-data.js?v=4" defer></script>
+  <script src="assets/js/site.js?v=4" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- ============================================================
-    NAV — update your initials/name in .nav-logo
-  ============================================================ -->
-  <nav>
+  <nav aria-label="Primary navigation">
     <div class="nav-inner">
-      <!-- ✏️ Replace "YN" with your initials -->
-      <a href="#hero" class="nav-logo">MM.eng</a>
+      <a href="#hero" class="nav-logo" aria-label="Mueez Mughal, back to top">MM.eng</a>
       <ul class="nav-links">
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#ubc solar">UBC Solar</a></li>
+        <li><a href="#ubc-solar">UBC Solar</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">About</a></li>
@@ -601,379 +47,518 @@
     </div>
   </nav>
 
-  <!-- ============================================================
-    HERO — update name, tagline, bio, and button links
-  ============================================================ -->
-  <section id="hero">
-    <div class="container">
-      <div class="hero-layout">
+  <main id="main-content">
+    <section id="hero">
+      <div class="container hero-container">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <!-- Rollback checkpoint: <p class="hero-eyebrow">Mechatronics Engineering at UBC</p> -->
+            <div
+              class="hero-eyebrow hero-engraver"
+              role="img"
+              aria-label="Mechatronics Engineering at UBC"
+            >
+              <svg class="engraver-arm" viewBox="0 0 92 64" aria-hidden="true">
+                <path class="engraver-base" d="M5 54h31v7H5zM11 46h19v8H11z" />
+                <g class="engraver-upper-arm">
+                  <path class="engraver-link-outline" d="m21 47 22-31" />
+                  <path class="engraver-link" d="m21 47 22-31" />
+                  <circle class="engraver-joint" cx="21" cy="47" r="7" />
+                  <circle class="engraver-joint-cap" cx="21" cy="47" r="3" />
+                </g>
+                <g class="engraver-forearm">
+                  <path class="engraver-link-outline" d="m43 16 34 20" />
+                  <path class="engraver-link" d="m43 16 34 20" />
+                  <circle class="engraver-joint" cx="43" cy="16" r="7" />
+                  <circle class="engraver-joint-cap" cx="43" cy="16" r="3" />
+                  <circle class="engraver-wrist" cx="77" cy="36" r="5" />
+                  <path class="engraver-nozzle" d="m78 39 8 4-4 8-6-3z" />
+                </g>
+              </svg>
 
-        <!-- ── Left: text ── -->
-        <div>
-          <p class="hero-eyebrow">Mechatronics Engineering at UBC</p>
-          <h1>Mueez Mughal</h1>
-          <p class="hero-bio">
-            3.5-year Mechatronics Engineering student at <strong>The University of British Columbia</strong>. 
-            I come equipped with first principles thinking, strong academic foundation, plethora of industry experience,
-            and most importantly, an ambition to learn.
-          </p>
-          <div class="hero-actions">
-            <a href="assets/Mueez_Mughal_Resume.pdf" class="btn btn-primary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Resume
-            </a>
-            <a href="#ubc solar" class="btn btn-outline">UBC Solar</a>
-            <a href="#contact" class="btn btn-outline">Get in Touch</a>
-          </div>
-        </div>
-
-        <!-- ── Right: photo ──
-          HOW TO ADD YOUR PHOTO:
-            1. Put your photo in assets/ (e.g. assets/photo.jpg)
-            2. Delete the <div class="hero-photo-placeholder"> block
-            3. Uncomment the <img> tag below and update src
-        ── -->
-        <div class="hero-photo-wrap">
-          <!-- ✏️ <img src="assets/photo.jpg" alt="Mueez Mughal" class="hero-photo" /> -->
-          <img src="assets/portrait.jpg" alt="Mueez Mughal" class="hero-photo" />
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-    EXPERIENCE
-    HOW TO ADD/EDIT: Duplicate an <div class="exp-item"> block.
-    Fields to update per item:
-      • .exp-date     → e.g. "May – Aug 2024"
-      • h3            → Job title
-      • .exp-company  → Company name
-      • .exp-desc     → 1–3 sentences about what you did
-      • .exp-tags     → technologies / tools used
-  ============================================================ -->
-  <section id="experience">
-    <div class="container">
-      <p class="section-label">Work History</p>
-      <h2>Co-op Experience</h2>
-
-      <div class="experience-list">
-      
-        <div class="exp-item">
-          <div class="exp-date">
-            <span>May 2026<br/>—<br/>Aug 2026</span>
-            <!-- ✏️ LOGO: save file to assets/logo-fingerprint.png, then swap the
-                 placeholder div below for:
-                 <img src="assets/logo-fingerprint.png" alt="Fingerprint Technologies" class="exp-logo" /> -->
-            <img src="assets/fingerprint_technologies_corp_logo.jpg" alt="Fingerprint Technologies" class="exp-logo" />
-          </div>
-          <div class="exp-content">
-            <h3>Mechatronics R&D Intern</h3>
-            <div class="exp-company">Fingerprint Technologies · North Vancouver, British Columbia</div>
-            <p class="exp-desc">Mechanical and Electrical R&D at a Micromobolity startup.</p>
-            <div class="exp-tags">
-              <span class="tag">Mechanical and Electrical Design</span>
+              <span class="engraving-track" aria-hidden="true">
+                <span class="engraving-guide">Mechatronics Engineering at UBC</span>
+                <span class="engraving-reveal">Mechatronics Engineering at UBC</span>
+                <span class="engraving-scan-line"></span>
+                <span class="engraving-spark">
+                  <i></i><i></i><i></i>
+                </span>
+              </span>
             </div>
-          </div>
-        </div>
-
-        
-        <div class="exp-item">
-          <div class="exp-date">
-            <span>May 2025<br/>—<br/>Dec 2025</span>
-            <!-- ✏️ LOGO: save file to assets/logo-suncor.png, then swap the
-                 placeholder div below for:
-                 <img src="assets/logo-suncor.png" alt="Suncor Energy" class="exp-logo" /> -->
-            <img src="assets/suncor-logo.png" alt="Suncor Energy" class="exp-logo" /> 
-          </div>
-          <div class="exp-content">
-            <h3>Mechanical Engineering Co-Op</h3>
-            <div class="exp-company">Suncor Energy · Calgary, Alberta</div>
-            <p class="exp-desc">
-              Production and Electrical Submerssible Pump (ESP) engineering at one of Canada's largest 
-              Steam-Assisted-Gravity-Drainage (SAGD) plants, Firebag. 
+            <h1>Mueez Mughal</h1>
+            <p class="hero-bio">
+              3.5-year Mechatronics Engineering student at
+              <strong>The University of British Columbia</strong>. I come equipped
+              with first principles thinking, a strong academic foundation, a
+              plethora of industry experience, and most importantly, an ambition
+              to learn.
             </p>
-            <div class="exp-tags">
-              <!-- ✏️ Update or add tags -->
-              <span class="tag">Mechanical Engineering</span>
+            <div class="hero-actions">
+              <a href="assets/Mueez_Mughal_Resume.pdf" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Resume
+              </a>
+              <a href="#ubc-solar" class="btn btn-outline">UBC Solar</a>
+              <a href="#contact" class="btn btn-outline">Get in Touch</a>
             </div>
           </div>
+
+          <figure class="hero-photo-wrap">
+            <div class="portrait-accent" aria-hidden="true"></div>
+            <img
+              src="assets/portrait.jpg"
+              alt="Mueez Mughal outdoors wearing a UBC Solar pullover"
+              class="hero-photo"
+            />
+            <figcaption>UBC · Vancouver, BC</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-label">Work History</p>
+            <h2>Co-op Experience</h2>
+          </div>
+          <p class="section-hint">Select a company logo or Explore role to open the full role details.</p>
         </div>
 
-        <!-- ── TEMPLATE (copy this block to add more entries) ──
-        <div class="exp-item">
-          <div class="exp-date">
-            <span>Mon YYYY<br/>—<br/>Mon YYYY</span>
-            <img src="assets/logo-company.png" alt="Company" class="exp-logo" />
+        <div class="experience-list">
+          <!--
+            EXPERIENCE TEMPLATE:
+            Duplicate an article, update the visible overview and role-detail
+            data attributes, then list skills as plain .tag elements.
+          -->
+          <article
+            class="experience-card"
+            id="experience-fingerprint"
+            data-experience
+            data-overview-title="Inside the role"
+            data-overview-detail="Mechanical and electrical R&amp;D for a micromobility startup. Assisted in the
+                    design and manufacturing of various products. My work largely revolved around improving assembly time at scale
+                    using custom-built machines, optimizing thermal perfomance through desige of experiment for fan blade geometry,
+                  designing a battery enclosure and retention mechanism, and a strength rig to validate structural and fatigue strength."
+          >
+            <div class="experience-overview">
+              <div class="experience-meta">
+                <span class="experience-date">May 2026 — Aug 2026</span>
+                <button class="experience-logo-button" type="button" data-exp-toggle aria-expanded="false" aria-label="Open Fingerprint Technologies role details">
+                  <img src="assets/fingerprint_technologies_corp_logo.jpg" alt="" class="experience-logo" />
+                </button>
+              </div>
+
+              <div class="experience-content">
+                <p class="experience-company">Fingerprint Technologies · North Vancouver, BC</p>
+                <h3>Mechatronics R&amp;D Intern</h3>
+                <p class="experience-desc">Mechanical and electrical R&amp;D at a micromobility startup.</p>
+                <div class="experience-tags" aria-label="Skills used in this role">
+                  <span class="tag">Mechanical &amp; Electrical Design</span>
+                </div>
+              </div>
+
+              <button class="experience-expand" type="button" data-exp-toggle aria-expanded="false">
+                <span>Explore role</span>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7.5 5 5 5-5" /></svg>
+              </button>
+            </div>
+
+            <div class="experience-detail" hidden>
+              <div>
+                <p class="experience-detail-label">Role detail</p>
+                <h4 class="experience-detail-title"></h4>
+                <p class="experience-detail-copy"></p>
+              </div>
+              <button class="icon-button experience-detail-close" type="button" aria-label="Close role detail">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article
+            class="experience-card"
+            id="experience-suncor"
+            data-experience
+            data-overview-title="Inside the role"
+            data-overview-detail="Production and Electrical Submersible Pump (ESP) engineering supporting Firebag operations. At Suncor
+            I helped with optimizing well integrity and throughput by conducting an RCFA on decades worth of well failures due to scale-like build up
+            and corrosion then providing a plan to move forward. I also spent time predicting ESP failures and causes, allowing me to work
+            closely on ESPs and Variable Frequency Drives. Ultimately I was able to develop an algorithm that determined ESP failure
+            shortly before the event and the cause of the potential failure saving Suncor up to $2.5 million annually."
+          >
+            <div class="experience-overview">
+              <div class="experience-meta">
+                <span class="experience-date">May 2025 — Dec 2025</span>
+                <button class="experience-logo-button" type="button" data-exp-toggle aria-expanded="false" aria-label="Open Suncor Energy role details">
+                  <img src="assets/suncor-logo.png" alt="" class="experience-logo" />
+                </button>
+              </div>
+
+              <div class="experience-content">
+                <p class="experience-company">Suncor Energy · Calgary, AB</p>
+                <h3>Mechanical Engineering Co-op</h3>
+                <p class="experience-desc">
+                  Production and Electrical Submersible Pump (ESP) engineering at
+                  Firebag, one of Canada’s largest Steam-Assisted Gravity Drainage
+                  (SAGD) facilities.
+                </p>
+                <div class="experience-tags" aria-label="Skills used in this role">
+                  <span class="tag">Mechanical Engineering</span>
+                </div>
+              </div>
+
+              <button class="experience-expand" type="button" data-exp-toggle aria-expanded="false">
+                <span>Explore role</span>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7.5 5 5 5-5" /></svg>
+              </button>
+            </div>
+
+            <div class="experience-detail" hidden>
+              <div>
+                <p class="experience-detail-label">Role detail</p>
+                <h4 class="experience-detail-title"></h4>
+                <p class="experience-detail-copy"></p>
+              </div>
+              <button class="icon-button experience-detail-close" type="button" aria-label="Close role detail">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ubc-solar">
+      <div class="container">
+        <div class="solar-heading-row">
+          <div>
+            <p class="section-label">Design Team</p>
+            <h2>UBC Solar</h2>
           </div>
-          <div class="exp-content">
-            <h3>Role Title</h3>
-            <div class="exp-company">Company · Location</div>
-            <p class="exp-desc">Description of work.</p>
-            <div class="exp-tags">
-              <span class="tag">Tool</span>
+          <img
+            class="solar-wordmark"
+            src="assets/brands/ubc-solar-wordmark.png"
+            alt="UBC Solar"
+          />
+        </div>
+        <div class="solar-grid">
+          <div class="solar-text">
+            <p>UBC Solar has been the single most important opportunity in my engineering career.</p>
+          </div>
+          <aside class="solar-brand-card" aria-label="UBC Solar university affiliation">
+            <img
+              class="solar-mark"
+              src="assets/brands/ubc-solar-mark.png"
+              alt=""
+            />
+            <div class="solar-affiliation">
+              <p class="section-label">University affiliation</p>
+              <img
+                class="ubc-crest"
+                src="assets/brands/ubc-logo.png"
+                alt="The University of British Columbia"
+              />
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container container-wide">
+        <div class="section-heading-row projects-heading">
+          <div>
+            <p class="section-label">Selected Work</p>
+            <h2>Projects</h2>
+          </div>
+          <p class="section-hint">Swipe, scroll, or use your arrow keys. Select a project for the full build story.</p>
+        </div>
+
+        <div class="project-console" aria-label="Project browser">
+          <div class="console-topbar">
+            <div class="console-identity">
+              <span class="console-light" aria-hidden="true"></span>
+              <span>Project library</span>
+            </div>
+            <div class="console-controls">
+              <span class="project-counter" aria-live="polite">01 / 01</span>
+              <button class="icon-button" id="project-prev" type="button" aria-label="Previous project">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12.5 4.5-5 5.5 5 5.5" /></svg>
+              </button>
+              <button class="icon-button" id="project-next" type="button" aria-label="Next project">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4.5 5 5.5-5 5.5" /></svg>
+              </button>
             </div>
           </div>
-        </div>
-        ─────────────────────────────────────────────────────── -->
 
-      </div>
-    </div>
-  </section>
-
-
-  <section id="ubc solar">
-    <div class="container">
-      <p class="section-label">Design Team</p>
-      <h2>UBC Solar</h2>
-
-      <div class="solar-grid">
-        <div class="solar-text">
-          <!-- ✏️ Write about Solar -->
-          <p>
-            UBC Solar has been the single most important opportunity in my engineering career.  
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-    PROJECTS
-    HOW TO ADD/EDIT: Duplicate a <div class="project-card"> block.
-    Fields to update per card:
-      • .project-card-img   → Add an <img src="..."> OR leave .no-img + emoji
-      • h3                  → Project title
-      • p                   → Short description (2–3 sentences)
-      • .exp-tags           → Tech stack tags
-      • .project-links a    → GitHub and/or live demo URLs
-    To remove the image placeholder, delete the entire .project-card-img div
-    and add a top border via CSS if desired.
-  ============================================================ -->
-  <section id="projects">
-    <div class="container">
-      <p class="section-label">Selected Work</p>
-      <h2>Personal Projects</h2>
-
-      <div class="projects-grid">
-
-        <!-- ── Project 1 ── -->
-        <div class="project-card">
-          <div class="project-card-img no-img">
-            <!-- ✏️ Replace emoji with a relevant one, OR swap this whole div for:
-                 <img src="assets/project1.jpg" alt="Project name" />             -->
-            <span class="proj-icon">🤖</span>
+          <div class="project-rail" id="project-rail" tabindex="0" aria-label="Projects"></div>
+          <div class="console-bottombar">
+            <span><kbd>←</kbd><kbd>→</kbd> Navigate</span>
+            <span><span class="controller-button">A</span> Open project</span>
           </div>
-          <div class="project-card-body">
-            <!-- ✏️ Update project name and description -->
-            <h3>The project</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container container-wide">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-label">Technical Toolkit</p>
+            <h2>Built Like a System</h2>
+          </div>
+          <p class="section-hint">Select a system on the car to explore the skills behind it.</p>
+        </div>
+
+        <div class="skills-explorer">
+          <div class="car-stage">
+            <div class="car-stage-topline">
+              <span>MM–01 · Systems view</span>
+              <span class="live-indicator"><span></span> Interactive</span>
+            </div>
+
+            <div class="car-canvas">
+              <svg class="formula-symbol" viewBox="150 25 420 480" role="img" aria-labelledby="formula-title formula-desc">
+                <title id="formula-title">Symbolic top-down Formula race car systems diagram</title>
+                <desc id="formula-desc">A recognizable open-wheel race car showing suspension, powertrain, controls, electrical systems, and build and manufacturing structure.</desc>
+                <defs>
+                  <filter id="symbol-shadow" x="-30%" y="-30%" width="160%" height="170%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#1a1714" flood-opacity=".12" />
+                  </filter>
+                </defs>
+
+                <g class="formula-system-part part-fabrication" filter="url(#symbol-shadow)">
+                  <path class="formula-wing" d="M196 48h328l-14 32H210Z" />
+                  <path class="formula-wing-edge" d="M210 61h300" />
+                  <path class="formula-endplate" d="M184 38h28v58h-22ZM508 38h28l-6 58h-22Z" />
+                  <path class="formula-floor" d="M308 192h104l43 56 22 132-50 40H293l-50-40 22-132Z" />
+                  <path class="formula-nose" d="M348 67h24l32 166-44 27-44-27Z" />
+                  <path class="formula-sidepod" d="m312 225-54 27-12 98 62 37 25-55Z" />
+                  <path class="formula-sidepod" d="m408 225 54 27 12 98-62 37-25-55Z" />
+                  <path class="formula-keel" d="M331 332h58l18 92h-94Z" />
+                  <path class="formula-diffuser" d="m294 403-39 48h210l-39-48Z" />
+                  <path class="formula-wing" d="M240 446h240l18 34H222Z" />
+                  <path class="formula-wing-edge" d="M255 461h210" />
+                  <path class="formula-endplate" d="M218 435h28v58h-28ZM474 435h28v58h-28Z" />
+                  <path class="formula-centerline" d="M360 72v357" />
+                </g>
+
+                <g class="formula-system-part part-suspension">
+                  <g class="formula-tire">
+                    <rect x="188" y="112" width="66" height="108" rx="15" />
+                    <rect x="466" y="112" width="66" height="108" rx="15" />
+                    <rect x="180" y="320" width="74" height="116" rx="16" />
+                    <rect x="466" y="320" width="74" height="116" rx="16" />
+                  </g>
+                  <g class="formula-rim">
+                    <circle cx="221" cy="166" r="21" />
+                    <circle cx="499" cy="166" r="21" />
+                    <circle cx="217" cy="378" r="23" />
+                    <circle cx="503" cy="378" r="23" />
+                  </g>
+                  <g class="formula-brake">
+                    <circle cx="221" cy="166" r="10" />
+                    <circle cx="499" cy="166" r="10" />
+                    <circle cx="217" cy="378" r="11" />
+                    <circle cx="503" cy="378" r="11" />
+                  </g>
+                  <g class="formula-suspension-lines">
+                    <path d="m248 144 84 42M248 191l91 4M472 144l-84 42M472 191l-91 4" />
+                    <path d="m248 343 76-24M248 408l84-51M472 343l-76-24M472 408l-84-51" />
+                    <path d="M221 151v30M499 151v30M217 361v34M503 361v34" />
+                  </g>
+                </g>
+
+                <g class="formula-system-part part-controls">
+                  <ellipse class="formula-cockpit" cx="360" cy="258" rx="45" ry="66" />
+                  <path class="formula-halo" d="M321 274c0-57 15-91 39-91s39 34 39 91M327 222h66" />
+                  <rect class="formula-steering" x="338" y="221" width="44" height="24" rx="8" />
+                  <circle class="formula-driver-mark" cx="360" cy="277" r="17" />
+                </g>
+
+                <g class="formula-system-part part-powertrain">
+                  <rect class="formula-power-unit" x="318" y="318" width="84" height="91" rx="16" />
+                  <circle class="formula-motor" cx="360" cy="350" r="23" />
+                  <path class="formula-power-ribs" d="M331 382h58M331 393h58M338 331v38M349 327v46M371 327v46M382 331v38" />
+                  <path class="formula-driveline" d="M360 401v39" />
+                </g>
+
+                <g class="formula-system-part part-electrical">
+                  <rect class="formula-pcb" x="270" y="272" width="39" height="51" rx="5" />
+                  <rect class="formula-pcb" x="411" y="272" width="39" height="51" rx="5" />
+                  <path class="formula-wire" d="M289 281h30l22-25M431 281h-30l-22-25M289 313h30l28 28M431 313h-30l-28 28" />
+                  <path class="formula-wire" d="M360 245v-32M360 309v16" />
+                  <circle class="formula-node" cx="289" cy="281" r="5" />
+                  <circle class="formula-node" cx="431" cy="281" r="5" />
+                  <circle class="formula-node" cx="289" cy="313" r="5" />
+                  <circle class="formula-node" cx="431" cy="313" r="5" />
+                </g>
+              </svg>
+
+              <button class="car-hotspot hotspot-wheels is-active" type="button" data-system="wheels" aria-pressed="true">
+                <span>01</span><b>Suspension</b>
+              </button>
+              <button class="car-hotspot hotspot-powertrain" type="button" data-system="powertrain" aria-pressed="false">
+                <span>02</span><b>Powertrain</b>
+              </button>
+              <button class="car-hotspot hotspot-electrical" type="button" data-system="electrical" aria-pressed="false">
+                <span>03</span><b>Electrical</b>
+              </button>
+              <button class="car-hotspot hotspot-controls" type="button" data-system="controls" aria-pressed="false">
+                <span>04</span><b>Controls</b>
+              </button>
+              <button class="car-hotspot hotspot-fabrication" type="button" data-system="fabrication" aria-pressed="false">
+                <span>05</span><b>Manufacturing</b>
+              </button>
+            </div>
+          </div>
+
+          <aside class="system-panel" aria-live="polite">
+            <p class="system-index" id="system-index">System 01</p>
+            <h3 id="system-title">Suspension &amp; Wheels</h3>
+            <p class="system-copy" id="system-copy">Engineering the car from the contact patch upward.</p>
+            <div class="system-tags" id="system-tags"></div>
+            <div class="system-selector" id="system-selector" aria-label="Vehicle systems"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- About content intentionally remains unchanged. -->
+    <section id="about">
+      <div class="container">
+        <p class="section-label">Who I Am</p>
+        <h2>About Me</h2>
+
+        <div class="about-grid">
+          <div class="about-text">
             <p>
-              The project of all projects
+              I'm a <strong>3.5-year Mechatronics Engineering student</strong> at The University of British Columbia,
+              expected to graduate in May, 2029. I'm drawn to anything that will test my skills and require me to critically think
+              for innovative solutions.
             </p>
-            <div class="exp-tags" style="margin-top:14px;">
-              <span class="tag">Engineering</span>
-            </div>
+            <p>
+              Through the two co-ops I've worked at, I have amassed plenty of experience in Mechanical and Electrical
+              Engineering. However, there is always more to learn. I always strive to become better at what I am not.
+              Currently, that means working on my Firmware abilities and refining my Electrical Engineering knowledge.
+            </p>
           </div>
-          <div class="project-card-footer">
-            <div class="project-links">
-              <!-- To add stuff copy line below
-              <a href="#">Demo ↗</a> -->
-            </div>
+
+          <div>
+            <p class="section-label about-interests-label">Outside of Engineering</p>
+            <ul class="interests-list">
+              <li>Hiking</li>
+              <li>Cooking &amp; Food</li>
+              <li>Guitar</li>
+            </ul>
           </div>
-        </div>
-
-        <!-- ── TEMPLATE (copy to add a project) ──
-        <div class="project-card">
-          <div class="project-card-img no-img">
-            <span class="proj-icon">🛠️</span>
-          </div>
-          <div class="project-card-body">
-            <h3>Project Title</h3>
-            <p>Description.</p>
-            <div class="exp-tags" style="margin-top:14px;">
-              <span class="tag">Tech</span>
-            </div>
-          </div>
-          <div class="project-card-footer">
-            <div class="project-links">
-              <a href="#">GitHub ↗</a>
-            </div>
-          </div>
-        </div>
-        ─────────────────────────────────────────── -->
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-    SKILLS
-    HOW TO ADD/EDIT:
-      • Add/remove <span class="tag"> items within each group
-      • Add a whole new group by duplicating a <div class="skill-group"> block
-      • Rename group headings by editing the <h3> text
-  ============================================================ -->
-  <section id="skills">
-    <div class="container">
-      <p class="section-label">Technical Toolkit</p>
-      <h2>Skills</h2>
-
-      <div class="skills-grid">
-
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <div class="skill-tags">
-            <!-- ✏️ Update tags -->
-            <span class="tag">C</span>
-            <span class="tag">C++</span>
-            <span class="tag">Python</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">VHDL</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Hardware</h3>
-          <div class="skill-tags">
-            <span class="tag">Microcontrollers</span>
-            <span class="tag">I²C / SPI / UART / CAN</span>
-            <span class="tag">PCB Design</span>
-            <span class="tag">KiCad</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Mechanical</h3>
-          <div class="skill-tags">
-            <span class="tag">SolidWorks</span>
-            <span class="tag">Fusion 360 CAD &amp CAM</span>
-            <span class="tag">GD&T</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Software & Frameworks</h3>
-          <div class="skill-tags">
-            <span class="tag">Git</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Tools & Instruments</h3>
-          <div class="skill-tags">
-            <span class="tag">Benchtop Testing</span>
-            <span class="tag">Manual Machining</span>
-            <span class="tag">CNC Machining</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <h3>Soft Skills</h3>
-          <div class="skill-tags">
-            <span class="tag">Technical Writing</span>
-            <span class="tag">Cross-functional Teams</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-    ABOUT
-    HOW TO EDIT:
-      • Update the paragraphs in .about-text
-      • Add/remove interests in .interests-list
-  ============================================================ -->
-  <section id="about">
-    <div class="container">
-      <p class="section-label">Who I Am</p>
-      <h2>About Me</h2>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <!-- ✏️ Write a few paragraphs about yourself, your goals, background -->
-          <p>
-            I'm a <strong>3.5-year Mechatronics Engineering student</strong> at The University of British Columbia,
-            expected to graduate in May, 2029. I'm drawn to anything that will test my skills and require me to critically think
-            for innovative solutions. 
-          </p>
-          <p>
-            Through the two co-ops I've worked at, I have amassed plenty of experience in Mechanical and Electrical
-            Engineering. However, there is always more to learn. I always strive to become better at what I am not.
-            Currently, that means working on my Firmware abilities and refining my Electrical Engineering knowledge.  
-          </p>
-        </div>
-
-        <div>
-          <p class="section-label" style="margin-bottom: 20px;">Outside of Engineering</p>
-          <!-- ✏️ Update your interests -->
-          <ul class="interests-list">
-            <li>Hiking</li>
-            <li>Cooking &amp Food</li>
-            <li>Guitar</li>
-            <!-- ✏️ Add more: <li>Your interest here</li> -->
-          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-    CONTACT
-    HOW TO EDIT:
-      • Update email address (two places)
-      • Update LinkedIn, GitHub URLs
-      • Update resume path
-  ============================================================ -->
-  <section id="contact">
-    <div class="container" style="max-width: 540px;">
-      <p class="section-label">Get In Touch</p>
-      <h2>Message Me!</h2>
-      <p style="font-size:16px; color:var(--ink-mid); font-weight:300; margin-bottom:36px; line-height:1.75;">
-        My inbox is always open if you want to talk. 
-      </p>
+    <section id="contact">
+      <div class="container contact-container">
+        <p class="section-label">Get In Touch</p>
+        <h2>Message Me!</h2>
+        <p class="contact-copy">My inbox is always open if you want to talk.</p>
 
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <!-- ✏️ Replace placeholder@email.com with your email -->
-        <a href="mailto:mueezmmughal7@gmail.com" class="btn btn-primary" style="width:fit-content;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          mueezmmughal7@gmail.com
-        </a>
-
-        <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <!-- ✏️ Replace # with your LinkedIn profile URL -->
-          <a href="https://www.linkedin.com/in/mueezmughal/" target="_blank" class="btn btn-outline">
-            LinkedIn ↗
+        <div class="contact-actions">
+          <a href="mailto:mueezmmughal7@gmail.com" class="btn btn-primary contact-email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            mueezmmughal7@gmail.com
           </a>
-          <!-- ✏️ Replace # with your GitHub profile URL -->
-          <a href="https://github.com/MueezMughal" target="_blank" class="btn btn-outline">
-            GitHub ↗
-          </a>
-          <!-- ✏️ Replace # with the path to your resume PDF -->
-          <a href="assets/Mueez_Mughal_Resume.pdf" class="btn btn-outline">
-            Resume PDF ↗
-          </a>
+          <div class="contact-secondary">
+            <a href="https://www.linkedin.com/in/mueezmughal/" target="_blank" rel="noreferrer" class="btn btn-outline">LinkedIn ↗</a>
+            <a href="https://github.com/MueezMughal" target="_blank" rel="noreferrer" class="btn btn-outline">GitHub ↗</a>
+            <a href="assets/Mueez_Mughal_Resume.pdf" class="btn btn-outline">Resume PDF ↗</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ============================================================
-    FOOTER — update your name
-  ============================================================ -->
   <footer>
     <div class="footer-inner">
-      <!-- ✏️ Replace "Your Name" with your name -->
       <span class="footer-copy">© 2026 Mueez Mughal</span>
       <div class="footer-links">
-        <a href="https://www.linkedin.com/in/mueezmughal/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/MueezMughal" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/mueezmughal/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/MueezMughal" target="_blank" rel="noreferrer">GitHub</a>
         <a href="assets/Mueez_Mughal_Resume.pdf">Resume</a>
       </div>
     </div>
   </footer>
 
+  <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-project-title">
+    <div class="dialog-shell">
+      <header class="dialog-header">
+        <div class="dialog-origin" id="dialog-origin"></div>
+        <button class="icon-button dialog-close" type="button" aria-label="Close project">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg>
+        </button>
+      </header>
+
+      <div class="dialog-content">
+        <div class="dialog-intro">
+          <p class="dialog-kicker" id="dialog-project-kicker"></p>
+          <h2 id="dialog-project-title"></h2>
+          <p class="dialog-lede" id="dialog-project-lede"></p>
+          <div class="dialog-tags" id="dialog-project-tags"></div>
+        </div>
+
+        <section class="project-model" aria-labelledby="project-model-title">
+          <div class="project-model-heading">
+            <div>
+              <p class="section-label">Interactive design file</p>
+              <h3 id="project-model-title">3D model</h3>
+            </div>
+            <p>Drag to rotate · Scroll to zoom</p>
+          </div>
+          <div class="project-model-shell" id="project-model-shell"></div>
+        </section>
+
+        <section class="project-media" id="project-media" aria-labelledby="project-media-title" hidden>
+          <div class="project-media-heading">
+            <div>
+              <p class="section-label">Project media</p>
+              <h3 id="project-media-title">Design record</h3>
+            </div>
+            <p id="project-media-counter"></p>
+          </div>
+
+          <div class="project-media-stage" id="project-media-stage" tabindex="0"></div>
+          <div class="project-media-nav">
+            <button class="icon-button media-previous" type="button" aria-label="Previous media item">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12.5 5-5 5 5 5" /></svg>
+            </button>
+            <div class="project-media-thumbnails" id="project-media-thumbnails" aria-label="Project media"></div>
+            <button class="icon-button media-next" type="button" aria-label="Next media item">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 5 5 5-5 5" /></svg>
+            </button>
+          </div>
+        </section>
+
+        <div class="project-story-grid">
+          <div class="project-story">
+            <p class="section-label">The full story</p>
+            <div id="dialog-project-story"></div>
+          </div>
+          <aside class="project-contributions">
+            <p class="section-label">Highlights</p>
+            <ul id="dialog-project-highlights"></ul>
+            <div class="project-external-links" id="dialog-project-links"></div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

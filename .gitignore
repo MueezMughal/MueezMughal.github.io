@@ -1,0 +1,6 @@
+# Keep the original high-resolution source video local. The optimized MP4
+# in the same folder is the version used by the website.
+assets/project-images/Videos/Servo_Press_Video.MOV
+
+# Local import and conversion staging files.
+.tmp-*

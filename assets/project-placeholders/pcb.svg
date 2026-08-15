@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">PCB project placeholder</title>
+  <desc id="desc">A stylized printed circuit board layout in blue and warm grey.</desc>
+  <rect width="1200" height="675" fill="#f1eeea"/>
+  <g stroke="#ded9d4" stroke-width="1" opacity=".65">
+    <path d="M0 75h1200M0 150h1200M0 225h1200M0 300h1200M0 375h1200M0 450h1200M0 525h1200M0 600h1200"/>
+    <path d="M75 0v675M150 0v675M225 0v675M300 0v675M375 0v675M450 0v675M525 0v675M600 0v675M675 0v675M750 0v675M825 0v675M900 0v675M975 0v675M1050 0v675M1125 0v675"/>
+  </g>
+  <rect x="257" y="126" width="686" height="423" rx="24" fill="#fff" stroke="#1a1714" stroke-width="5"/>
+  <g fill="none" stroke="#2d5be3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M328 213h128l51 51v80M328 444h110l70-70h72M871 214H740l-64 64v55M870 461H758l-87-87h-39"/>
+    <path d="M373 282h69l34 34M820 371h-74l-31-31M368 505v-38l57-57M839 169v51l-59 59"/>
+  </g>
+  <g fill="#eef1fc" stroke="#2d5be3" stroke-width="4">
+    <rect x="501" y="270" width="198" height="139" rx="7"/>
+    <circle cx="328" cy="213" r="14"/><circle cx="328" cy="444" r="14"/>
+    <circle cx="871" cy="214" r="14"/><circle cx="870" cy="461" r="14"/>
+    <circle cx="373" cy="282" r="10"/><circle cx="368" cy="505" r="10"/>
+    <circle cx="820" cy="371" r="10"/><circle cx="839" cy="169" r="10"/>
+  </g>
+  <g stroke="#1a1714" stroke-width="3">
+    <path d="M526 250v20M551 250v20M576 250v20M601 250v20M626 250v20M651 250v20M676 250v20"/>
+    <path d="M526 409v20M551 409v20M576 409v20M601 409v20M626 409v20M651 409v20M676 409v20"/>
+  </g>
+  <g fill="#1a1714" font-family="monospace">
+    <text x="555" y="329" font-size="18">MCU</text>
+    <text x="542" y="355" font-size="13" opacity=".55">CONTROL</text>
+    <text x="74" y="92" font-size="22" fill="#2d5be3">EMBEDDED CONTROL BOARD</text>
+    <text x="74" y="122" font-size="14" fill="#2d5be3" opacity=".65">PCB / FIRMWARE / TESTING</text>
+    <text x="1000" y="615" font-size="15" fill="#2d5be3">MM–PCB</text>
+  </g>
+</svg>

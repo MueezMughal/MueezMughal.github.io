@@ -16,7 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=5" />
 
   <!-- Used only when a 3D model is opened. The rest of the site works without it. -->
   <script type="importmap">
@@ -28,7 +28,7 @@
     }
   </script>
   <script src="assets/js/portfolio-data.js?v=4" defer></script>
-  <script src="assets/js/site.js?v=4" defer></script>
+  <script src="assets/js/site.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -109,6 +109,12 @@
 
           <figure class="hero-photo-wrap">
             <div class="portrait-accent" aria-hidden="true"></div>
+            <div class="hero-university-mark">
+              <img
+                src="assets/brands/ubc-logo.png"
+                alt="The University of British Columbia"
+              />
+            </div>
             <img
               src="assets/portrait.jpg"
               alt="Mueez Mughal outdoors wearing a UBC Solar pullover"
@@ -237,38 +243,29 @@
     <section id="ubc-solar">
       <div class="container">
         <div class="solar-heading-row">
-          <div>
-            <p class="section-label">Design Team</p>
-            <h2>UBC Solar</h2>
-          </div>
-          <img
-            class="solar-wordmark"
-            src="assets/brands/ubc-solar-wordmark.png"
-            alt="UBC Solar"
-          />
+          <p class="section-label">Design Team</p>
+          <h2 class="solar-title">
+            <img
+              class="solar-wordmark"
+              src="assets/brands/ubc-solar-wordmark.png"
+              alt="UBC Solar"
+            />
+          </h2>
         </div>
         <div class="solar-grid">
           <div class="solar-text">
             <p>UBC Solar has been the single most important opportunity in my engineering career.
               The opportunity to orchestrate vehicle dynamics for our 4th generation vehicle
-              has permanently altered by view of engineering for the better. 
+              has permanently altered my view of engineering for the better. 
             </p>
           </div>
-          <aside class="solar-brand-card" aria-label="UBC Solar university affiliation">
+          <div class="solar-wheel-stage" aria-hidden="true">
             <img
-              class="solar-mark"
+              class="solar-scroll-wheel"
               src="assets/brands/ubc-solar-mark.png"
               alt=""
             />
-            <div class="solar-affiliation">
-              <p class="section-label">University affiliation</p>
-              <img
-                class="ubc-crest"
-                src="assets/brands/ubc-logo.png"
-                alt="The University of British Columbia"
-              />
-            </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>

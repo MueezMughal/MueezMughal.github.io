@@ -57,6 +57,35 @@
     });
   });
 
+  /* UBC Solar scroll wheel ----------------------------------------- */
+  const solarSection = $("#ubc-solar");
+  const solarWheel = solarSection ? $(".solar-scroll-wheel", solarSection) : null;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let solarScrollFrame = 0;
+
+  const updateSolarWheel = () => {
+    solarScrollFrame = 0;
+    if (!solarSection || !solarWheel || reduceMotion.matches) return;
+
+    const sectionBounds = solarSection.getBoundingClientRect();
+    const scrollRange = window.innerHeight + sectionBounds.height;
+    const progress = Math.min(
+      1,
+      Math.max(0, (window.innerHeight - sectionBounds.top) / scrollRange)
+    );
+    solarWheel.style.setProperty("--solar-wheel-rotation", `${progress * 540}deg`);
+  };
+
+  const requestSolarWheelUpdate = () => {
+    if (!solarScrollFrame) solarScrollFrame = requestAnimationFrame(updateSolarWheel);
+  };
+
+  if (solarSection && solarWheel && !reduceMotion.matches) {
+    updateSolarWheel();
+    window.addEventListener("scroll", requestSolarWheelUpdate, { passive: true });
+    window.addEventListener("resize", requestSolarWheelUpdate);
+  }
+
   /* Project console ------------------------------------------------- */
   const projectRail = $("#project-rail");
   const projectCounter = $(".project-counter");

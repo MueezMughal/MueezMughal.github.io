@@ -565,6 +565,28 @@ h2 {
   border-radius: 10px;
 }
 
+.hero-university-mark {
+  position: absolute;
+  top: 18px;
+  left: -38px;
+  z-index: 2;
+  display: grid;
+  width: 78px;
+  height: 96px;
+  place-items: center;
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgba(26, 23, 20, 0.14);
+}
+
+.hero-university-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .hero-photo-wrap figcaption {
   position: absolute;
   z-index: 2;
@@ -801,26 +823,22 @@ h2 {
 }
 
 .solar-heading-row {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 36px;
-  margin-bottom: 38px;
+  margin-bottom: 42px;
 }
 
-.solar-heading-row h2 {
+.solar-title {
   margin-bottom: 0;
 }
 
 .solar-wordmark {
-  width: min(42vw, 345px);
+  width: min(68vw, 410px);
   height: auto;
 }
 
 .solar-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(310px, 0.72fr);
-  gap: clamp(42px, 8vw, 105px);
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: clamp(48px, 9vw, 112px);
   align-items: center;
 }
 
@@ -832,40 +850,41 @@ h2 {
   line-height: 1.75;
 }
 
-.solar-brand-card {
+.solar-wheel-stage {
+  position: relative;
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
-  gap: 20px;
-  align-items: center;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: 0 14px 38px rgba(26, 23, 20, 0.06);
+  width: 190px;
+  height: 190px;
+  place-items: center;
+  justify-self: end;
 }
 
-.solar-mark {
-  width: 92px;
-  height: 92px;
-  border-radius: 5px;
+.solar-wheel-stage::before,
+.solar-wheel-stage::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(45, 91, 227, 0.18);
+  border-radius: 50%;
+}
+
+.solar-wheel-stage::before {
+  inset: 0;
+}
+
+.solar-wheel-stage::after {
+  inset: 14px;
+  border-style: dashed;
+}
+
+.solar-scroll-wheel {
+  width: 148px;
+  height: 148px;
+  border: 4px solid var(--surface);
+  border-radius: 50%;
+  box-shadow: 0 14px 38px rgba(26, 23, 20, 0.13);
   object-fit: cover;
-}
-
-.solar-affiliation {
-  min-width: 0;
-}
-
-.solar-affiliation .section-label {
-  margin-bottom: 8px;
-}
-
-.ubc-crest {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: 62px;
-  object-fit: contain;
-  object-position: left center;
+  transform: rotate(var(--solar-wheel-rotation, 0deg));
+  will-change: transform;
 }
 
 #projects {
@@ -2160,6 +2179,10 @@ footer {
     width: 255px;
     height: 330px;
   }
+
+  .hero-university-mark {
+    left: -30px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -2218,6 +2241,15 @@ footer {
     justify-self: start;
   }
 
+  .hero-university-mark {
+    top: -18px;
+    right: -13px;
+    left: auto;
+    width: 68px;
+    height: 84px;
+    padding: 8px 11px;
+  }
+
   .hero-photo {
     width: min(75vw, 310px);
     height: min(92vw, 380px);
@@ -2242,22 +2274,31 @@ footer {
   }
 
   .solar-heading-row {
-    display: block;
     margin-bottom: 34px;
   }
 
   .solar-wordmark {
     width: min(76vw, 330px);
-    margin-top: 22px;
   }
 
   .solar-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: minmax(0, 1fr) 128px;
+    gap: 28px;
   }
 
-  .solar-brand-card {
-    width: min(100%, 430px);
+  .solar-wheel-stage {
+    width: 128px;
+    height: 128px;
+  }
+
+  .solar-wheel-stage::after {
+    inset: 10px;
+  }
+
+  .solar-scroll-wheel {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
   }
 
   .experience-overview {
@@ -2402,19 +2443,12 @@ footer {
     font-size: 18px;
   }
 
-  .solar-brand-card {
-    grid-template-columns: 72px minmax(0, 1fr);
-    gap: 14px;
-    padding: 14px;
+  .solar-grid {
+    grid-template-columns: 1fr;
   }
 
-  .solar-mark {
-    width: 72px;
-    height: 72px;
-  }
-
-  .ubc-crest {
-    height: 50px;
+  .solar-wheel-stage {
+    justify-self: end;
   }
 
   .experience-company {
@@ -2571,5 +2605,9 @@ footer {
   .engraving-scan-line,
   .engraving-spark {
     display: none;
+  }
+
+  .solar-scroll-wheel {
+    transform: none !important;
   }
 }

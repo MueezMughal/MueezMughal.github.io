@@ -93,10 +93,6 @@ svg {
   width: min(100% - 48px, var(--wide-w));
 }
 
-#skills .container-wide {
-  width: min(100% - 48px, 1200px);
-}
-
 section {
   padding: 88px 0;
 }
@@ -138,6 +134,10 @@ nav {
   list-style: none;
 }
 
+.nav-links li {
+  flex: 0 0 auto;
+}
+
 .nav-links a {
   position: relative;
   color: var(--ink-mid);
@@ -146,6 +146,7 @@ nav {
   letter-spacing: 0.045em;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: color 0.18s ease;
 }
 
@@ -172,285 +173,40 @@ nav {
 }
 
 #hero {
-  padding: 92px 0 84px;
+  padding: 52px 0;
   border-top: 0;
-}
-
-.hero-container {
-  width: min(100% - 48px, 1030px);
 }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
-  gap: 70px;
+  grid-template-columns: minmax(0, 1fr) 176px;
+  gap: 48px;
   align-items: center;
 }
 
 .hero-copy {
-  width: 100%;
   min-width: 0;
 }
 
-.hero-eyebrow {
+.hero-affiliation {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  color: var(--accent);
-  font: 500 12px/1.4 var(--font-mono);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  animation: fade-up 0.5s ease 0.1s both;
+  gap: 12px;
+  margin: 18px 0 26px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-.hero-eyebrow::before {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: var(--accent);
+.hero-affiliation img {
+  width: 30px;
+  height: 40px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
-.hero-engraver {
-  display: grid;
-  width: min(100%, 420px);
-  height: 64px;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: 0;
-  align-items: stretch;
-  margin-bottom: 18px;
-  overflow: hidden;
-}
-
-.hero-engraver::before {
-  display: none;
-}
-
-.engraver-arm {
-  width: 92px;
-  height: 64px;
-  overflow: visible;
-}
-
-.engraver-base {
-  fill: var(--ink);
-}
-
-.engraver-link-outline {
-  fill: none;
-  stroke: var(--ink);
-  stroke-linecap: round;
-  stroke-width: 11;
-}
-
-.engraver-link {
-  fill: none;
-  stroke: #dfe6fb;
-  stroke-linecap: round;
-  stroke-width: 6;
-}
-
-.engraver-joint {
-  fill: var(--surface);
-  stroke: var(--ink);
-  stroke-width: 3;
-}
-
-.engraver-joint-cap {
-  fill: var(--accent);
-}
-
-.engraver-wrist {
-  fill: var(--ink);
-  stroke: var(--accent);
-  stroke-width: 2;
-}
-
-.engraver-nozzle {
-  fill: var(--ink-mid);
-  stroke: var(--ink);
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-}
-
-.engraver-upper-arm {
-  transform-box: fill-box;
-  transform-origin: 16px 42px;
-  animation: engraver-upper-motion 7s ease-in-out infinite;
-}
-
-.engraver-forearm {
-  transform-box: fill-box;
-  transform-origin: 7px 7px;
-  animation: engraver-forearm-motion 7s ease-in-out infinite;
-}
-
-.engraving-track {
-  position: relative;
-  display: block;
-  min-width: 0;
-  height: 64px;
-  overflow: hidden;
-}
-
-.engraving-track::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 10px;
-  left: 0;
-  height: 1px;
-  background: linear-gradient(90deg, var(--ink-light), transparent);
-  opacity: 0.28;
-}
-
-.engraving-guide,
-.engraving-reveal {
-  position: absolute;
-  top: 23px;
-  left: 0;
-  width: max-content;
-  white-space: nowrap;
-}
-
-.engraving-guide {
-  color: rgba(45, 91, 227, 0.2);
-}
-
-.engraving-reveal {
-  color: var(--accent);
-  clip-path: inset(0 100% 0 0);
-  animation: engraving-reveal 7s linear infinite;
-}
-
-.engraving-scan-line {
-  position: absolute;
-  top: 44px;
-  left: 0;
-  width: calc(100% - 7px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-warm));
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: engraving-scan 7s linear infinite;
-}
-
-.engraving-spark {
-  position: absolute;
-  top: 43px;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-  box-shadow:
-    0 0 0 2px rgba(212, 80, 10, 0.25),
-    0 0 12px 4px rgba(212, 80, 10, 0.42);
-  opacity: 0;
-  animation: engraving-spark-travel 7s linear infinite;
-}
-
-.engraving-spark i {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 3px;
-  height: 1px;
-  background: var(--accent-warm);
-  transform-origin: left center;
-}
-
-.engraving-spark i:nth-child(1) {
-  transform: rotate(-38deg) translateX(5px);
-}
-
-.engraving-spark i:nth-child(2) {
-  transform: rotate(18deg) translateX(6px);
-}
-
-.engraving-spark i:nth-child(3) {
-  transform: rotate(62deg) translateX(4px);
-}
-
-@keyframes engraving-reveal {
-  0%,
-  10% {
-    clip-path: inset(0 100% 0 0);
-  }
-  72%,
-  100% {
-    clip-path: inset(0);
-  }
-}
-
-@keyframes engraving-spark-travel {
-  0%,
-  9% {
-    left: 0;
-    opacity: 0;
-  }
-  10% {
-    left: 0;
-    opacity: 1;
-  }
-  72% {
-    left: calc(100% - 10px);
-    opacity: 1;
-  }
-  76%,
-  100% {
-    left: calc(100% - 10px);
-    opacity: 0;
-  }
-}
-
-@keyframes engraving-scan {
-  0%,
-  10% {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  12% {
-    opacity: 0.45;
-  }
-  72% {
-    opacity: 0.45;
-    transform: scaleX(1);
-  }
-  76%,
-  100% {
-    opacity: 0;
-    transform: scaleX(1);
-  }
-}
-
-@keyframes engraver-upper-motion {
-  0%,
-  10%,
-  100% {
-    transform: rotate(0deg);
-  }
-  38% {
-    transform: rotate(2deg);
-  }
-  72% {
-    transform: rotate(-1deg);
-  }
-}
-
-@keyframes engraver-forearm-motion {
-  0%,
-  10%,
-  100% {
-    transform: rotate(0deg);
-  }
-  38% {
-    transform: rotate(-3deg);
-  }
-  72% {
-    transform: rotate(2deg);
-  }
+.hero-affiliation span span {
+  color: var(--ink-mid);
 }
 
 h1,
@@ -461,8 +217,8 @@ h2 {
 }
 
 h1 {
-  margin-bottom: 26px;
-  font-size: clamp(46px, 7vw, 70px);
+  margin-bottom: 0;
+  font-size: clamp(40px, 6vw, 58px);
   line-height: 1.04;
   letter-spacing: -0.018em;
   animation: fade-up 0.5s ease 0.2s both;
@@ -472,21 +228,6 @@ h2 {
   margin-bottom: 46px;
   font-size: clamp(30px, 4vw, 40px);
   line-height: 1.12;
-}
-
-.hero-bio {
-  max-width: 580px;
-  margin-bottom: 38px;
-  color: var(--ink-mid);
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.72;
-  animation: fade-up 0.5s ease 0.3s both;
-}
-
-.hero-bio strong {
-  color: var(--ink);
-  font-weight: 500;
 }
 
 .hero-actions {
@@ -537,68 +278,16 @@ h2 {
 }
 
 .hero-photo-wrap {
-  position: relative;
   margin: 0;
   justify-self: end;
-  animation: fade-up 0.55s ease 0.25s both;
 }
 
 .hero-photo {
-  position: relative;
-  z-index: 1;
-  width: 310px;
-  height: 380px;
-  border: 3px solid var(--surface);
-  border-radius: 10px;
-  box-shadow: 0 18px 50px rgba(26, 23, 20, 0.14);
+  width: 176px;
+  height: 208px;
+  border-radius: 8px;
   object-fit: cover;
   object-position: 50% 35%;
-}
-
-.portrait-accent {
-  position: absolute;
-  top: 18px;
-  right: -17px;
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-}
-
-.hero-university-mark {
-  position: absolute;
-  top: 18px;
-  left: -38px;
-  z-index: 2;
-  display: grid;
-  width: 78px;
-  height: 96px;
-  place-items: center;
-  padding: 9px 13px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: 0 12px 32px rgba(26, 23, 20, 0.14);
-}
-
-.hero-university-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.hero-photo-wrap figcaption {
-  position: absolute;
-  z-index: 2;
-  right: 14px;
-  bottom: 13px;
-  padding: 5px 8px;
-  border-radius: 3px;
-  background: rgba(26, 23, 20, 0.78);
-  color: white;
-  font: 400 10px/1.2 var(--font-mono);
-  letter-spacing: 0.04em;
-  backdrop-filter: blur(5px);
 }
 
 .section-label {
@@ -628,82 +317,161 @@ h2 {
   font: 400 12px/1.65 var(--font-mono);
 }
 
-.experience-list {
-  border-top: 1px solid var(--border);
+/* A quiet stretch of road, with a company at each stop. */
+.roadmap {
+  position: relative;
+  isolation: isolate;
+  padding-top: 8px;
 }
 
-.experience-card {
-  border-bottom: 1px solid var(--border);
-}
-
-.experience-overview {
+.experience-roadmap {
+  position: relative;
   display: grid;
-  grid-template-columns: 148px minmax(0, 1fr) auto;
-  gap: 28px;
-  align-items: start;
-  padding: 34px 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
 }
 
-.experience-meta {
+.experience-roadmap::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 30px;
+  right: 12.5%;
+  left: 12.5%;
+  height: 28px;
+  border: 1px solid #c5c0ba;
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(90deg, #f7f5f2 0 12px, transparent 12px 24px) center / 100% 2px no-repeat,
+    #595956;
+  box-shadow: inset 0 3px 0 var(--bg), inset 0 -3px 0 var(--bg);
+}
+
+.roadmap-car {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  z-index: 2;
+  width: 40px;
+  height: 20px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.roadmap-stop {
+  position: relative;
   display: flex;
+  min-width: 0;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 17px;
-}
-
-.experience-date {
-  color: var(--ink-light);
-  font: 400 11px/1.45 var(--font-mono);
+  align-items: center;
+  scroll-margin-top: 100px;
 }
 
 .experience-logo-button {
-  width: 70px;
-  height: 70px;
-  padding: 6px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 12px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 50%;
   background: var(--surface);
+  box-shadow: 0 0 0 7px var(--bg);
   cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.18s ease, border-color 0.18s ease;
 }
 
 .experience-logo-button:hover,
 .experience-logo-button[aria-expanded="true"] {
-  border-color: rgba(45, 91, 227, 0.5);
-  box-shadow: 0 10px 30px rgba(26, 23, 20, 0.08);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  transform: translateY(-3px);
 }
 
 .experience-logo {
   width: 100%;
   height: 100%;
-  border-radius: 5px;
   object-fit: contain;
 }
 
-.experience-content h3 {
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.25;
+.roadmap-caption {
+  margin-top: 18px;
+  text-align: center;
 }
 
-.experience-company {
-  margin-bottom: 7px;
-  color: var(--accent);
-  font: 500 12px/1.5 var(--font-mono);
-}
-
-.experience-desc {
-  max-width: 620px;
-  color: var(--ink-mid);
+.roadmap-caption h3 {
+  margin-bottom: 5px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
-.experience-tags,
-.dialog-tags,
-.system-tags {
+.experience-date {
+  color: var(--ink-mid);
+  font: 400 10px/1.6 var(--font-mono);
+}
+
+.experience-status {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--ink-mid);
+  font: 400 9px/1.5 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.experience-detail {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: calc(50% + 57px);
+  width: min(280px, 30vw);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 30px rgba(26, 23, 20, 0.1);
+  text-align: left;
+  animation: reveal-detail 0.18s ease both;
+}
+
+.experience-detail[hidden] {
+  display: none;
+}
+
+.roadmap-stop:last-child .experience-detail {
+  right: calc(50% + 57px);
+  left: auto;
+}
+
+.experience-detail h4 {
+  padding-right: 27px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.experience-detail-copy {
+  color: var(--ink-mid);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.experience-detail-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.experience-detail-close.icon-button {
+  width: 28px;
+  height: 28px;
+  border: 0;
+}
+
+.dialog-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -722,75 +490,12 @@ h2 {
   font: 500 11px/1.25 var(--font-mono);
 }
 
-.experience-expand {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 22px;
-  padding: 5px 0 5px 10px;
-  border: 0;
-  background: transparent;
-  color: var(--ink-light);
-  font: 500 10px/1 var(--font-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.experience-expand svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  transition: transform 0.2s ease;
-}
-
-.experience-expand[aria-expanded="true"] svg {
-  transform: rotate(180deg);
-}
-
-.experience-detail {
-  position: relative;
-  margin: 0 0 34px 176px;
-  padding: 24px 64px 24px 25px;
-  border: 1px solid rgba(45, 91, 227, 0.2);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius);
-  background: var(--surface);
-  animation: reveal-detail 0.25s ease both;
-}
-
-.experience-detail[hidden] {
-  display: none;
-}
-
-.experience-detail-label,
-.dialog-kicker,
-.system-index {
+.dialog-kicker {
   margin-bottom: 5px;
   color: var(--accent);
   font: 500 10px/1.4 var(--font-mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.experience-detail h4 {
-  margin-bottom: 7px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.experience-detail-copy {
-  color: var(--ink-mid);
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.experience-detail-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
 }
 
 .icon-button {
@@ -1103,396 +808,6 @@ kbd,
   font-size: 14px;
 }
 
-.skills-explorer {
-  display: grid;
-  grid-template-columns: minmax(0, 1.72fr) minmax(320px, 0.75fr);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  box-shadow: 0 14px 45px rgba(26, 23, 20, 0.06);
-}
-
-.car-stage {
-  min-width: 0;
-  border-right: 1px solid var(--border);
-  background:
-    linear-gradient(rgba(45, 91, 227, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 91, 227, 0.035) 1px, transparent 1px),
-    var(--bg);
-  background-size: 28px 28px;
-}
-
-.car-stage-topline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  padding: 15px 18px;
-  border-bottom: 1px solid var(--border);
-  color: var(--ink-light);
-  font: 500 10px/1 var(--font-mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.live-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.live-indicator > span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(45, 91, 227, 0.1);
-}
-
-.car-canvas {
-  position: relative;
-  min-height: 620px;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  padding: 42px 32px 30px;
-}
-
-.formula-symbol {
-  width: min(100%, 440px);
-  height: auto;
-  overflow: visible;
-}
-
-.formula-system-part {
-  opacity: 1;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: opacity 0.24s ease, filter 0.24s ease;
-}
-
-.car-stage[data-active-system] .formula-system-part {
-  opacity: 0.62;
-}
-
-.car-stage[data-active-system="wheels"] .part-suspension,
-.car-stage[data-active-system="powertrain"] .part-powertrain,
-.car-stage[data-active-system="electrical"] .part-electrical,
-.car-stage[data-active-system="controls"] .part-controls,
-.car-stage[data-active-system="fabrication"] .part-fabrication {
-  opacity: 1;
-  filter: drop-shadow(0 0 8px rgba(45, 91, 227, 0.34));
-}
-
-.formula-wing {
-  fill: var(--accent);
-  stroke: var(--ink);
-  stroke-width: 3;
-  stroke-linejoin: round;
-}
-
-.formula-wing-edge {
-  fill: none;
-  stroke: white;
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-
-.formula-endplate {
-  fill: var(--surface);
-  stroke: var(--ink);
-  stroke-width: 3;
-  stroke-linejoin: round;
-}
-
-.formula-floor,
-.formula-keel,
-.formula-diffuser {
-  fill: rgba(26, 23, 20, 0.1);
-  stroke: var(--ink-mid);
-  stroke-width: 3;
-  stroke-linejoin: round;
-}
-
-.formula-nose,
-.formula-sidepod {
-  fill: var(--tag-bg);
-  stroke: var(--accent);
-  stroke-width: 4;
-  stroke-linejoin: round;
-}
-
-.formula-centerline {
-  fill: none;
-  stroke: var(--ink-light);
-  stroke-width: 2;
-  stroke-dasharray: 6 8;
-}
-
-.formula-tire {
-  fill: var(--ink);
-  stroke: var(--ink);
-  stroke-width: 3;
-}
-
-.formula-rim {
-  fill: var(--surface);
-  stroke: var(--ink-mid);
-  stroke-width: 4;
-}
-
-.formula-brake {
-  fill: var(--accent);
-  stroke: var(--surface);
-  stroke-width: 3;
-}
-
-.formula-suspension-lines {
-  fill: none;
-  stroke: var(--ink-mid);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.formula-cockpit {
-  fill: var(--ink);
-  stroke: var(--ink);
-  stroke-width: 4;
-}
-
-.formula-halo {
-  fill: none;
-  stroke: var(--surface);
-  stroke-width: 7;
-  stroke-linecap: round;
-}
-
-.formula-steering {
-  fill: var(--accent);
-  stroke: var(--surface);
-  stroke-width: 2;
-}
-
-.formula-driver-mark {
-  fill: var(--ink-mid);
-  stroke: var(--surface);
-  stroke-width: 3;
-}
-
-.formula-power-unit {
-  fill: #dfe6fb;
-  stroke: var(--accent);
-  stroke-width: 4;
-}
-
-.formula-motor {
-  fill: var(--surface);
-  stroke: var(--accent);
-  stroke-width: 4;
-}
-
-.formula-power-ribs,
-.formula-driveline {
-  fill: none;
-  stroke: var(--ink-mid);
-  stroke-width: 3;
-  stroke-linecap: round;
-}
-
-.formula-pcb {
-  fill: var(--surface);
-  stroke: var(--accent-warm);
-  stroke-width: 3;
-}
-
-.formula-wire {
-  fill: none;
-  stroke: var(--accent-warm);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.formula-node {
-  fill: var(--accent-warm);
-}
-
-.car-hotspot {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px 6px 6px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 5px 14px rgba(26, 23, 20, 0.08);
-  color: var(--ink-mid);
-  cursor: pointer;
-  transition: border-color 0.18s ease, transform 0.18s ease, color 0.18s ease;
-}
-
-.car-hotspot::after {
-  content: "";
-  position: absolute;
-  width: 72px;
-  height: 1px;
-  background: var(--ink-light);
-  opacity: 0.5;
-}
-
-.car-hotspot span {
-  display: grid;
-  width: 22px;
-  height: 22px;
-  place-items: center;
-  border-radius: 3px;
-  background: var(--bg);
-  color: var(--accent);
-  font: 500 9px/1 var(--font-mono);
-}
-
-.car-hotspot b {
-  font: 500 9px/1 var(--font-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.car-hotspot:hover,
-.car-hotspot.is-active {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.car-hotspot.is-active span {
-  background: var(--accent);
-  color: white;
-}
-
-.hotspot-wheels {
-  top: 18%;
-  left: 2.5%;
-}
-
-.hotspot-wheels::after,
-.hotspot-fabrication::after {
-  top: 50%;
-  left: 100%;
-}
-
-.hotspot-powertrain {
-  right: 2.5%;
-  bottom: 24%;
-}
-
-.hotspot-powertrain::after,
-.hotspot-electrical::after,
-.hotspot-controls::after {
-  top: 50%;
-  right: 100%;
-}
-
-.hotspot-electrical {
-  top: 51%;
-  right: 2.5%;
-}
-
-.hotspot-controls {
-  top: 30%;
-  right: 2.5%;
-}
-
-.hotspot-fabrication {
-  top: 52%;
-  left: 2.5%;
-}
-
-.hotspot-wheels::after {
-  width: 105px;
-}
-
-.hotspot-fabrication::after {
-  width: 160px;
-}
-
-.hotspot-controls::after {
-  width: 260px;
-}
-
-.hotspot-electrical::after {
-  width: 210px;
-}
-
-.hotspot-powertrain::after {
-  width: 260px;
-}
-
-.system-panel {
-  display: flex;
-  min-height: 600px;
-  flex-direction: column;
-  padding: 50px 38px 34px;
-}
-
-.system-panel h3 {
-  margin-bottom: 12px;
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 1.14;
-}
-
-.system-copy {
-  color: var(--ink-mid);
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.65;
-}
-
-.system-tags {
-  align-content: flex-start;
-}
-
-.system-tags .tag {
-  animation: tag-in 0.22s ease both;
-}
-
-.system-selector {
-  display: grid;
-  gap: 4px;
-  margin-top: auto;
-  padding-top: 30px;
-}
-
-.system-selector button {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  gap: 10px;
-  align-items: center;
-  padding: 9px 0;
-  border: 0;
-  border-top: 1px solid var(--border);
-  background: transparent;
-  color: var(--ink-light);
-  font: 500 10px/1.2 var(--font-mono);
-  letter-spacing: 0.04em;
-  text-align: left;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.system-selector button span {
-  color: var(--ink-light);
-}
-
-.system-selector button:hover,
-.system-selector button.is-active {
-  color: var(--accent);
-}
-
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1540,7 +855,7 @@ kbd,
 }
 
 .contact-container {
-  max-width: 540px;
+  text-align: left;
 }
 
 .contact-copy {
@@ -2119,48 +1434,6 @@ footer {
   }
 }
 
-@keyframes tag-in {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 1040px) {
-  .skills-explorer {
-    grid-template-columns: 1fr;
-  }
-
-  .car-stage {
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .system-panel {
-    min-height: 0;
-  }
-
-  .system-selector {
-    grid-template-columns: repeat(5, 1fr);
-    margin-top: 30px;
-  }
-
-  .system-selector button {
-    display: block;
-    padding: 9px 5px;
-    text-align: center;
-  }
-
-  .system-selector button span {
-    display: block;
-    margin-bottom: 5px;
-  }
-}
-
 @media (max-width: 900px) {
   .nav-links {
     gap: 17px;
@@ -2169,32 +1442,13 @@ footer {
   .nav-links a {
     font-size: 10px;
   }
-
-  .hero-layout {
-    grid-template-columns: minmax(0, 1fr) 270px;
-    gap: 45px;
-  }
-
-  .hero-photo {
-    width: 255px;
-    height: 330px;
-  }
-
-  .hero-university-mark {
-    left: -30px;
-  }
 }
 
 @media (max-width: 720px) {
   .container,
   .container-wide,
-  .hero-container,
   .nav-inner,
   .footer-inner {
-    width: min(100% - 34px, var(--max-w));
-  }
-
-  #skills .container-wide {
     width: min(100% - 34px, var(--max-w));
   }
 
@@ -2224,40 +1478,6 @@ footer {
 
   .nav-links::-webkit-scrollbar {
     display: none;
-  }
-
-  #hero {
-    padding-top: 55px;
-  }
-
-  .hero-layout {
-    grid-template-columns: 1fr;
-    gap: 42px;
-    min-width: 0;
-  }
-
-  .hero-photo-wrap {
-    order: -1;
-    justify-self: start;
-  }
-
-  .hero-university-mark {
-    top: -18px;
-    right: -13px;
-    left: auto;
-    width: 68px;
-    height: 84px;
-    padding: 8px 11px;
-  }
-
-  .hero-photo {
-    width: min(75vw, 310px);
-    height: min(92vw, 380px);
-  }
-
-  .hero-bio {
-    width: 100%;
-    max-width: 100%;
   }
 
   .section-heading-row {
@@ -2301,31 +1521,6 @@ footer {
     border-width: 3px;
   }
 
-  .experience-overview {
-    grid-template-columns: 78px minmax(0, 1fr);
-    gap: 18px;
-    padding: 28px 0;
-  }
-
-  .experience-date {
-    font-size: 9px;
-  }
-
-  .experience-logo-button {
-    width: 62px;
-    height: 62px;
-  }
-
-  .experience-expand {
-    grid-column: 2;
-    justify-self: start;
-    margin-top: 0;
-  }
-
-  .experience-detail {
-    margin-left: 0;
-  }
-
   .project-rail {
     gap: 15px;
     padding: 24px 17px 32px;
@@ -2338,42 +1533,6 @@ footer {
 
   .console-bottombar {
     display: none;
-  }
-
-  .car-canvas {
-    min-height: 480px;
-    padding: 20px 6px 16px;
-  }
-
-  .car-hotspot b {
-    display: none;
-  }
-
-  .hotspot-wheels {
-    top: 20%;
-    left: 1%;
-  }
-
-  .hotspot-controls {
-    right: 1%;
-    left: auto;
-  }
-
-  .hotspot-powertrain,
-  .hotspot-electrical {
-    right: 1%;
-  }
-
-  .hotspot-fabrication {
-    left: 1%;
-  }
-
-  .car-hotspot::after {
-    width: 44px;
-  }
-
-  .system-selector {
-    grid-template-columns: 1fr 1fr;
   }
 
   .about-grid,
@@ -2406,53 +1565,12 @@ footer {
     font-size: 44px;
   }
 
-  .hero-engraver {
-    height: 58px;
-    grid-template-columns: 72px minmax(0, 1fr);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-  }
-
-  .engraver-arm {
-    width: 76px;
-    height: 58px;
-  }
-
-  .engraving-track {
-    height: 58px;
-  }
-
-  .engraving-guide,
-  .engraving-reveal {
-    top: 22px;
-  }
-
-  .engraving-scan-line {
-    top: 40px;
-  }
-
-  .engraving-spark {
-    top: 39px;
-  }
-
-  .hero-actions .btn {
-    flex: 1 1 auto;
-  }
-
-  .experience-content h3 {
-    font-size: 18px;
-  }
-
   .solar-grid {
     grid-template-columns: 1fr;
   }
 
   .solar-wheel-stage {
     justify-self: end;
-  }
-
-  .experience-company {
-    font-size: 10px;
   }
 
   .project-tile {
@@ -2462,29 +1580,6 @@ footer {
 
   .console-identity {
     font-size: 9px;
-  }
-
-  .car-canvas {
-    min-height: 460px;
-    padding-inline: 2px;
-  }
-
-  .car-hotspot {
-    padding: 4px;
-  }
-
-  .car-hotspot span {
-    width: 20px;
-    height: 20px;
-  }
-
-  .car-hotspot::after {
-    width: 34px;
-    height: 1px;
-  }
-
-  .system-panel {
-    padding: 32px 22px 24px;
   }
 
   .contact-email {
@@ -2598,16 +1693,134 @@ footer {
     transition-duration: 0.01ms !important;
   }
 
-  .engraving-reveal {
-    clip-path: inset(0);
+  .solar-scroll-wheel {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .experience-roadmap {
+    display: block;
   }
 
-  .engraving-scan-line,
-  .engraving-spark {
+  .experience-roadmap::before,
+  .roadmap-car {
     display: none;
   }
 
-  .solar-scroll-wheel {
-    transform: none !important;
+  .roadmap-stop {
+    display: grid;
+    min-height: 136px;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 14px 26px;
+    align-items: center;
+    padding-bottom: 48px;
+  }
+
+  .roadmap-stop:last-child {
+    min-height: 88px;
+    padding-bottom: 0;
+  }
+
+  .roadmap-stop:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 44px;
+    bottom: -44px;
+    left: 30px;
+    width: 28px;
+    border: 1px solid #c5c0ba;
+    background:
+      repeating-linear-gradient(180deg, #f7f5f2 0 12px, transparent 12px 24px) center / 2px 100% no-repeat,
+      #595956;
+    box-shadow: inset 3px 0 0 var(--bg), inset -3px 0 0 var(--bg);
+  }
+
+  .experience-logo-button {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .roadmap-caption {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .experience-detail,
+  .roadmap-stop:last-child .experience-detail {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: auto;
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  #hero {
+    padding: 36px 0;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) 104px;
+    gap: 24px 18px;
+  }
+
+  .hero-copy {
+    display: contents;
+  }
+
+  .hero-copy h1 {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+    font-size: clamp(34px, 7vw, 42px);
+  }
+
+  .hero-affiliation {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    gap: 9px;
+    margin: -12px 0 0;
+    font-size: 12px;
+  }
+
+  .hero-affiliation img {
+    width: 24px;
+    height: 32px;
+  }
+
+  .hero-photo-wrap {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  .hero-photo {
+    width: 104px;
+    height: 134px;
+  }
+
+  .hero-actions {
+    grid-column: 1 / -1;
+    gap: 8px;
+  }
+
+  .hero-actions .btn {
+    padding-inline: 15px;
+    font-size: 13px;
+  }
+
+  .experience-detail {
+    padding: 16px;
+  }
+
+  .roadmap-stop {
+    column-gap: 18px;
   }
 }

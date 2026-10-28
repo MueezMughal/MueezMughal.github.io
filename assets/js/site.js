@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const data = window.PORTFOLIO_DATA || { projects: [], skillSystems: {} };
+  const data = window.PORTFOLIO_DATA || { projects: [] };
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
@@ -15,47 +15,52 @@
 
   const pad = (number) => String(number).padStart(2, "0");
 
-  /* Experience cards ------------------------------------------------ */
-  const setExperienceDetail = (card, title, detail, sourceButton = null) => {
-    const panel = $(".experience-detail", card);
-    const titleNode = $(".experience-detail-title", panel);
-    const copyNode = $(".experience-detail-copy", panel);
-    const isSameOpen =
-      !panel.hidden &&
-      titleNode.textContent === title &&
-      sourceButton?.getAttribute("aria-expanded") === "true";
+  /* Work history roadmap ------------------------------------------- */
+  const experienceStops = $$("[data-experience]");
+  let activeExperience = null;
 
-    $$("[aria-expanded]", card).forEach((button) => button.setAttribute("aria-expanded", "false"));
-
-    if (isSameOpen) {
-      panel.hidden = true;
-      return;
-    }
-
-    titleNode.textContent = title;
-    copyNode.textContent = detail;
-    panel.hidden = false;
-
-    $$("[data-exp-toggle]", card).forEach((button) => button.setAttribute("aria-expanded", "true"));
+  const closeExperience = (restoreFocus = false) => {
+    if (!activeExperience) return;
+    const stop = activeExperience;
+    $(".experience-detail", stop).hidden = true;
+    $("[data-exp-toggle]", stop).setAttribute("aria-expanded", "false");
+    activeExperience = null;
+    if (restoreFocus) $("[data-exp-toggle]", stop).focus({ preventScroll: true });
   };
 
-  $$("[data-experience]").forEach((card) => {
-    $$("[data-exp-toggle]", card).forEach((button) => {
-      button.addEventListener("click", () => {
-        setExperienceDetail(
-          card,
-          card.dataset.overviewTitle || "Inside the role",
-          card.dataset.overviewDetail || "Add your role details here.",
-          button
-        );
-      });
-    });
+  const openExperience = (stop) => {
+    if (stop === activeExperience) return;
+    closeExperience();
+    $(".experience-detail", stop).hidden = false;
+    $("[data-exp-toggle]", stop).setAttribute("aria-expanded", "true");
+    activeExperience = stop;
+  };
 
-    $(".experience-detail-close", card)?.addEventListener("click", () => {
-      $(".experience-detail", card).hidden = true;
-      $$("[aria-expanded]", card).forEach((button) => button.setAttribute("aria-expanded", "false"));
+  experienceStops.forEach((stop) => {
+    $("[data-exp-toggle]", stop).addEventListener("click", () => {
+      if (activeExperience === stop) closeExperience();
+      else openExperience(stop);
     });
+    $(".experience-detail-close", stop).addEventListener("click", () => closeExperience(true));
   });
+
+  document.addEventListener("click", (event) => {
+    if (activeExperience && !activeExperience.contains(event.target)) closeExperience();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && activeExperience) {
+      event.preventDefault();
+      closeExperience(true);
+    }
+  });
+
+  // Keep links from project stories pointing to the matching roadmap stop.
+  const openLinkedExperience = () => {
+    const stop = experienceStops.find((item) => `#${item.id}` === window.location.hash);
+    if (stop) openExperience(stop);
+  };
+  window.addEventListener("hashchange", openLinkedExperience);
+  openLinkedExperience();
 
   /* UBC Solar scroll wheel ----------------------------------------- */
   const solarSection = $("#ubc-solar");
@@ -476,56 +481,6 @@
     }
   };
 
-  /* Automotive skills explorer ------------------------------------- */
-  const systems = data.skillSystems || {};
-  const systemKeys = Object.keys(systems);
-  const systemSelector = $("#system-selector");
-
-  const renderSystemSelector = () => {
-    if (!systemSelector) return;
-    systemSelector.innerHTML = systemKeys
-      .map(
-        (key, index) => `
-          <button type="button" data-system="${escapeHtml(key)}" class="${index === 0 ? "is-active" : ""}">
-            <span>${escapeHtml(systems[key].index)}</span>${escapeHtml(systems[key].shortTitle)}
-          </button>
-        `
-      )
-      .join("");
-
-    $$("[data-system]", systemSelector).forEach((button) => {
-      button.addEventListener("click", () => setSkillSystem(button.dataset.system));
-    });
-  };
-
-  const setSkillSystem = (key) => {
-    const system = systems[key];
-    if (!system) return;
-    const carStage = $(".car-stage");
-    if (carStage) carStage.dataset.activeSystem = key;
-    $("#system-index").textContent = `System ${system.index}`;
-    $("#system-title").textContent = system.title;
-    $("#system-copy").textContent = system.copy;
-    $("#system-tags").innerHTML = system.skills
-      .map(
-        (skill, index) =>
-          `<span class="tag" style="animation-delay:${index * 25}ms">${escapeHtml(skill)}</span>`
-      )
-      .join("");
-
-    $$("[data-system]", $(".skills-explorer")).forEach((button) => {
-      const isActive = button.dataset.system === key;
-      button.classList.toggle("is-active", isActive);
-      if (button.classList.contains("car-hotspot")) {
-        button.setAttribute("aria-pressed", String(isActive));
-      }
-    });
-  };
-
-  $$(".car-hotspot").forEach((button) => {
-    button.addEventListener("click", () => setSkillSystem(button.dataset.system));
-  });
-
   /* Active navigation ----------------------------------------------- */
   const sections = $$("main > section[id]");
   const navLinks = $$(".nav-links a");
@@ -546,8 +501,6 @@
   }
 
   renderProjects();
-  renderSystemSelector();
-  if (systemKeys.length) setSkillSystem(systemKeys[0]);
 
   const requestedProjectId = new URLSearchParams(window.location.search).get("project");
   if (requestedProjectId) {

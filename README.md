@@ -82,17 +82,22 @@ origin: {
 
 The logo in the project detail view will then link back to that co-op entry.
 
-## Edit co-op details
+## Edit the work roadmap
 
-Co-op roles remain in [`index.html`](index.html). The company logo and
-**Explore role** button open the role detail panel. Skills are plain `.tag`
-elements that can be added or removed without any JavaScript.
+Co-op stops remain in [`index.html`](index.html), ordered from Suncor to Zipline.
+Each `.roadmap-stop` contains its company logo, dates, and a short hidden overview.
+Select a logo to open the overview beside it; select it again, use the close
+button, click outside, or press Escape to dismiss it. Only one overview is open
+at a time. Upcoming roles have an `.experience-status` label.
 
-## Edit the automotive skills map
+Keep each stop's `id` stable so project origin links continue to work. To add a
+stop, copy a list item, give its stop, toggle, detail, and title unique IDs, and
+update `aria-controls` and `aria-labelledby` to match. Also update the desktop
+`repeat(4, ...)` grid and road endpoints in the stylesheet for the new stop count.
 
-The clickable car system content is in the `skillSystems` section of
-[`assets/js/portfolio-data.js`](assets/js/portfolio-data.js). Edit the title,
-description, or `skills` list; the diagram and selector update automatically.
+Company marks are stored locally. The Tesla mark comes from
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Tesla_T_symbol.svg);
+the Zipline mark comes from [Zipline's homepage](https://www.flyzipline.com/).
 
 ## Local preview
 
